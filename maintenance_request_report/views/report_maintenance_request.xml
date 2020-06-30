@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_maintenance_request_document">
+            <t t-call="web.external_layout">
+                <t t-set="doc" t-value="doc.with_context(lang=doc.user_id.partner_id.lang)"/>
+
+
+<!--                <t t-set="address">-->
+<!--                    <div t-field="doc.company_id.partner_id"-->
+<!--                        t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>-->
+<!--                    <p t-if="doc.company_id.partner_id.vat"><t t-esc="doc.company_id.partner_id.country_id.vat_label or 'Tax ID'"/>:-->
+<!--                        <span t-field="doc.company_id.vat"/>-->
+<!--                    </p>-->
+<!--                </t>-->
+
+<!--                <t t-if="doc.user_id.partner_id">-->
+<!--                    <t t-set="information_block">-->
+<!--                        <strong t-if="doc.user_id.partner_id">Partner Company Information:</strong>-->
+<!--                        <div t-field="doc.user_id.partner_id"-->
+<!--                            t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}'/>-->
+<!--                    </t>-->
+<!--                </t>-->
+
+                <div class="page">
+                    <div class="oe_structure"/>
+
+                    <h2 class="mt16">
+                        <t>
+<!--                            <span t-if="doc.state not in ['done', 'cancel']">In-progress Report #</span>-->
+<!--                            <span t-if="doc.state in ['done', 'cancel']">Final Report #</span>-->
+                        </t>
+                        <span t-field="doc.name"/>
+                    </h2>
+
+
+                </div>
+            </t>
+        </template>
+
+
+        <template id="report_maintenance_request">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="maintenance_request_report.report_maintenance_request_document" t-lang="doc.user_id.partner_id.lang"/>
+                </t>
+            </t>
+        </template>
+
+
+        <report
+            id="action_report_maintenance_request"
+            string="Maintenance Request"
+            model="maintenance.request"
+            report_type="qweb-pdf"
+            file="maintenance_request_report.report_maintenance_request"
+            name="maintenance_request_report.report_maintenance_request"
+            print_report_name="'Maintenance Request - %s' % (object.name)"
+        />
+
+
+    </data>
+</odoo>
