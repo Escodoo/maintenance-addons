@@ -7,7 +7,10 @@
 
 
              <div class="page">
-                    <div class="oe_structure"/>
+
+                <div class="page">
+
+                  <div class="oe_structure"/>
 
                     <h2 class="mt16">
                         <t>
@@ -116,6 +119,9 @@
 
                   </div>
 
+
+                </div>
+
             </t>
         </template>
 
@@ -141,4 +147,5 @@
 
 
     </data>
+
 </odoo>
