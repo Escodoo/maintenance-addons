@@ -10,7 +10,7 @@
 
                     <h2 class="mt16">
                         <t>
-                            <span>Maintenance Request #</span>
+                            <span>Maintenance Request</span>
                         </t>
                         <!--<span t-field="doc.ref"/>-->
                     </h2>
